@@ -3,6 +3,7 @@ import { compile } from '.'
 
 describe("Dijkstra compiler", ()=>{
     it("runs", ()=> {
-        expect(compile("asd")).toBeTruthy();
+        const compilationResult = compile("asd")
+        expect(compilationResult).toBeTruthy();
     })
 })
