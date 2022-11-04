@@ -2,6 +2,10 @@
     "name": "@dijkstra/core",
     "version": "0.0.1",
     "description": "The Dijkstra compiler",
+    "scripts": {
+        "build": "tsc",
+        "test": "vitest run"
+    },
     "devDependencies": {
         "typescript": "^4.8.4",
         "vitest": "^0.24.5"
