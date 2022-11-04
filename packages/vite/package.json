@@ -1,0 +1,16 @@
+{
+    "name": "@dijkstra/vite",
+    "version": "0.0.1",
+    "description": "The oficial vite plugin for the Dijkstra ORM",
+    "devDependencies": {
+        "typescript": "^4.8.4"
+    },
+    "peerDependencies": {
+        "vite": "*"
+    },
+    "dependencies": {
+        "@dijkstra/core": "*"
+    },
+    "type": "module",
+    "main": "dist/index.js"
+}

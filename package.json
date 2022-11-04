@@ -1,0 +1,12 @@
+{
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "turbo build",
+        "test": "turbo test"
+    },
+    "devDependencies": {
+        "turbo": "^1.6.3"
+    }
+}

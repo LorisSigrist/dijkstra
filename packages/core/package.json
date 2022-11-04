@@ -1,0 +1,11 @@
+{
+    "name": "@dijkstra/core",
+    "version": "0.0.1",
+    "description": "The Dijkstra compiler",
+    "devDependencies": {
+        "typescript": "^4.8.4",
+        "vitest": "^0.24.5"
+    },
+    "type": "module",
+    "main": "dist/index.js"
+}
