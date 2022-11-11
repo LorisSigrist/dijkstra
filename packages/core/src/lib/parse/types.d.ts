@@ -11,12 +11,14 @@ interface Field {
 
 interface Store {
     name: string,
-    fields: Field[]
+    fields: Field[],
+    modifiers: Modifier[]
 }
 
 interface Database {
     name: string,
-    stores: Store[]
+    stores: Store[],
+    modifiers: Modifier[]
 }
 
 interface AST {

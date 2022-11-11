@@ -1,4 +1,5 @@
 import { literal } from "./literal.js";
+import { modifierList } from "./modifierList.js";
 import { stores } from "./stores.js";
 import { token } from "./token.js";
 import { mandatoryWhitespace, optionalWhitespace } from "./whitespace.js";
@@ -17,6 +18,10 @@ export function database(code: string, pos: number): { database: Database, next:
 
     pos = optionalWhitespace(code, pos, true);
 
+    const modifiersResult = modifierList(code, pos);
+    pos = modifiersResult.next;
+    const modifiers = modifiersResult.modifiers;
+
     const openingParenLiteralResult = literal(code, pos, "{");
     pos = openingParenLiteralResult.next;
 
@@ -32,7 +37,8 @@ export function database(code: string, pos: number): { database: Database, next:
     return {
         database: {
             name: databaseName,
-            stores: databaseStores
+            stores: databaseStores,
+            modifiers
         },
         next: pos
     }
