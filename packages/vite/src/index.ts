@@ -7,8 +7,7 @@ export function dijkstra(): Plugin {
         name: "dijkstra",
         transform(code, id) {
             if (!id.endsWith(".djk")) return;
-            console.log(id, code);
-            return "export default 'Hello World';"
+            return compile(code);
         }
     }
 }

@@ -1,6 +1,8 @@
 import { databases } from "./expressions/databases.js";
 
 export function parse(code: string): AST {
-    const ast = databases(code, 0);
-    return ast;
+    const {databases: dbs} = databases(code, 0);
+    return {
+        databases: dbs
+    };
 }

@@ -18,6 +18,8 @@ export function databases(code: string, pos: number) : {databases: Database[], n
         }
     }
 
+    if(pos !== code.length) throw SyntaxError("Unexpected Token")
+
     return {
         databases,
         next: pos

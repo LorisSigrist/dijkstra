@@ -8,7 +8,7 @@ interface CompilationResult {
 export function compile(code: string): CompilationResult {
     const ast = parse(code);
     return {
-        code: "",
+        code: `export const AST = JSON.parse('${JSON.stringify(ast)}')`,
         typeDeclarations: "",
     }
 }

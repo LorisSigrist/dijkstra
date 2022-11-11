@@ -45,11 +45,16 @@ async function openDB(name, version, onUpgrade = undefined) {
 }
 
 /**
+ * @typedef {{ single: boolean }} Options
+ */
+
+/**
  * 
  * @param {IDBDatabase} db 
  * @param {string} name
+ * @param {Options} options
  */
-async function initStore(db, name, options = undefined) {
+async function initStore(db, name, options = { single: false}) {
     db.createObjectStore(name);
 
     return {
