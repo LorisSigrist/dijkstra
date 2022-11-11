@@ -18,3 +18,7 @@ interface Database {
     name: string,
     stores: Store[]
 }
+
+interface AST {
+    databases: Database[]
+}

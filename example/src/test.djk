@@ -1,0 +1,13 @@
+db ExampleDB @version(0) {
+    store Session @single {
+        id: @key(generator: uuid)
+        token: string,
+        userId: string
+    }
+
+    store Timerecord {
+        id: @key(generator: uuid)
+        duration: number @default(0)
+
+    }
+}

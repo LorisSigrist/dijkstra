@@ -4,13 +4,13 @@ A modern ORM for IndexedDB.
 > This is very work in progress. Expect Bugs, Breaking Changes, and in general: the worst. Use this at your own risk.
 
 ## .djk Files
-.djk Files are how you describe the shape of your database. While they are similar to `.prisma` files, they are not interchangeable.
+`.djk` Files are how you describe the shape of your indexedb database.
 
 ```js
 /// my-database.djk
-db MyDB {
+db MyDB @version(5) {
     store Users {
-        id: string @key() @generator(uuid)
+        id: string @key(generator: uuid)
         username: string
         posts: OneToMany(store: Post, field: user)
     }
@@ -19,20 +19,31 @@ db MyDB {
         user: ManyToOne(store: User, field: posts)
         published: Date
         title: string,
+        tags: string[]
         subtitle: string @nullable,
-        text: string
+        content: string
+    }
+
+    store Session @single() {
+        id: string @key(generator: uuid);
+        token: string
+        userId: string
     }
 }
 ```
 
-Dijkstra will then generate the code for these database definitions. To use it, simply import it:
+Dijkstra will then generate the necessary indexeddb code, as well as Type definitions.
+To use it, simply import the `.djk` file, and let your build-system do the rest.
 
 ```ts
 //my-module.js
-import {MyDB, type User, type Post} from './my-database.djk'
+import { MyDB } from './my-database.djk'
 
-const user : User = await MyDB.User.findOne();
+const db = await MyDB.open();
 
-//We use Proxies to allow lazy population
-const posts : Post[] = await user.posts
+const user : MyDB.User = await db.User.findOne();
+
+//Relations are populated lazily when accssed
+const posts : MyDB.Post[] = await user.posts;
 ```
+
